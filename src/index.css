@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@theme {
+  --color-background: #121212;
+  --color-foreground: #fff;
+  
+  --color-muted-foreground: #575757;
+
+  --color-primary: #272727;
+  --color-primary-foreground: #cbcbcb;
+  
+  --color-destructive: #ea887f;
+
+  --color-card: #1e1e1e;
+
+  --color-ring: #fff;
+  --color-input: #fff;
+}
+
+body {
+  @apply bg-background text-foreground flex items-center justify-center min-h-screen;
+}
+
+.btn {
+  @apply bg-primary text-primary-foreground shadow hover:bg-primary/60 h-9 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:cursor-pointer
+}
+
+.input {
+  @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
+}
+
+.label {
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70
+}

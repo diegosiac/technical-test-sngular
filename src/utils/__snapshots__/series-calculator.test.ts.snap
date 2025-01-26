@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SeriesCalculator > fibonacci() method > should throw RangeError for > negative numbers 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > fibonacci() method > should throw RangeError for > undefined input 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > fibonacci() method > should throw RangeError for > zero 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > prime() method > should throw RangeError for > negative numbers 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > prime() method > should throw RangeError for > undefined input 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > prime() method > should throw RangeError for > zero 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > triangular() method > should throw RangeError for > negative numbers 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > triangular() method > should throw RangeError for > undefined input 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;
+
+exports[`SeriesCalculator > triangular() method > should throw RangeError for > zero 1`] = `[RangeError: El número debe ser un número natural (no negativo)]`;

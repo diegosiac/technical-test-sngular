@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SerieCalculationResult Component > should to match snapshot 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    class="flex flex-col gap-2"
+  >
+    <label
+      class="label"
+    >
+      Operación:
+    </label>
+    <span
+      class="text-xs bg-primary p-2 rounded-md"
+    >
+      serie(
+      n
+      ) = triangular(
+      n
+       * 2) - primo(
+      n
+      ) - fibonacci(
+      n
+      )
+    </span>
+    <label
+      class="label mt-4"
+    >
+      Resultado:
+    </label>
+    <span
+      aria-busy="false"
+      class="bg-primary p-2 rounded-md text-xs break-words"
+    >
+      200
+    </span>
+  </div>
+</div>
+`;

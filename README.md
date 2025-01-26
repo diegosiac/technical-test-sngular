@@ -8,6 +8,8 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
+![Preview page](https://github.com/user-attachments/assets/2cdd0323-eb11-4ca7-9c70-2a9b872a9a6c)
+
 ## 📋 Descripción del Proyecto
 
 Solución para calcular términos de la serie especial:

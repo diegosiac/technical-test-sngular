@@ -1,50 +1,129 @@
-# React + TypeScript + Vite
+# Solución Prueba Técnica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Bienvenido/a al repositorio de la prueba técnica! Aquí encontrarás los detalles para configurar y ejecutar el proyecto, así como información relevante sobre las decisiones técnicas tomadas.
 
-Currently, two official plugins are available:
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=fff)
+![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Descripción del Proyecto
 
-## Expanding the ESLint configuration
+Solución para calcular términos de la serie especial:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`serie(n) = triangular(n * 2) - primo(n) - fibonacci(n)`
 
-- Configure the top-level `parserOptions` property like this:
+## ✨ Features Principales
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Cálculos intensivos en Web Workers
+- Manejo de números grandes con `BigInt`
+- Sistema de caché para resultados
+- UI responsiva con TailwindCSS
+
+## 🛠 Configuración Inicial
+
+1. **Clonar repositorio**
+
+   ```bash
+   git clone https://github.com/diegosiac/technical-test-sngular.git
+   cd technical-test-sngular
+   ```
+
+2. **Instalar dependencias**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Iniciar servidor de desarrollo**
+
+   ```bash
+   pnpm dev
+   ```
+
+## 🧪 Ejecutar Pruebas
+
+```bash
+# Ejecutar todas las pruebas
+pnpm test
+
+# Ejecutar con cobertura
+pnpm test:coverage
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Comandos Disponibles
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+| Comando            | Descripción                          |
+| ------------------ | ------------------------------------ |
+| pnpm dev           | Inicia servidor de desarrollo        |
+| pnpm build         | Genera build para producción         |
+| pnpm preview       | Sirve build de producción localmente |
+| pnpm test          | Ejecuta pruebas unitarias            |
+| pnpm test:coverage | Genera reporte de cobertura          |
+| pnpm lint          | Ejecuta linter                       |
+| pnpm format        | Formatea código automáticamente      |
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 🧠 Decisiones Técnicas Clave
+
+### ⚡ Web Workers
+
+- **Motivación**: Evitar bloqueos en el hilo principal durante cálculos intensivos
+
+- **Implementación**:
+
+  - Worker dedicado para calculo de término n de la serie
+  - Comunicación via `postMessage` con tipos TypeScript
+
+### 🔢 BigInt
+
+- Utilizado para manejar números grandes en:
+
+  - Secuencia de Fibonacci
+
+  - Números primos
+
+  - Números triangulares
+
+### 🗄 Sistema de Caché
+
+- Almacena resultados previos
+
+- Reduce cálculos redundantes
+
+- Implementado con un custom hook React
+
+## 🗂 Estructura de Directorios
+
 ```
+src/
+├── components/      # Componentes React
+├── hooks/           # Custom Hooks
+├── utils/           # Lógica de cálculos y Web Workers
+├── types/           # Definiciones TypeScript
+└── test.setup.ts    # Configuración de pruebas
+```
+
+## 🧩 Componentes Principales
+
+1. `<SerieCalculationForm/>`
+
+   - Formulario para ingresar el número n
+
+   - Validación de entrada
+
+   - Manejo de estado local
+
+2. `<SerieCalculator/>` (Lógica)
+
+   - Coordina cálculos usando Web Workers
+
+   - Implementa caché de resultados
+
+   - Manejo de errores
+
+3. `<SerieCalculationResult/>`
+
+   - Muestra resultados
+
+   - Estado de carga/error

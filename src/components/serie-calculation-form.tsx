@@ -1,5 +1,6 @@
 import { type ChangeEvent, type FormEvent, useCallback, useMemo, useState } from 'react'
 import { Loader2 } from 'lucide-react'
+import { useCalculation } from '@/hooks/use-calculation'
 
 const getValidationError = (value: string): string => {
   if (!value) return 'El campo es requerido'
@@ -12,13 +13,9 @@ const getValidationError = (value: string): string => {
   return ''
 }
 
-interface SerieCalculationFormProps {
-  loading: boolean
-  onCalculate: (value: number) => void
-}
-
-export const SerieCalculationForm = ({ loading, onCalculate }: SerieCalculationFormProps) => {
+export const SerieCalculationForm = () => {
   const [input, setInput] = useState<string>('')
+  const { handleCalculate, isLoading } = useCalculation()
 
   const errorMessage = useMemo(() => getValidationError(input), [input])
 
@@ -34,7 +31,7 @@ export const SerieCalculationForm = ({ loading, onCalculate }: SerieCalculationF
 
     const numberValue = parseInt(input, 10)
 
-    onCalculate(numberValue)
+    handleCalculate(numberValue)
   }
 
   return (
@@ -56,8 +53,8 @@ export const SerieCalculationForm = ({ loading, onCalculate }: SerieCalculationF
         <span className="text-xs text-destructive">{errorMessage}</span>
       </div>
 
-      <button type="submit" className="btn" disabled={loading || !!errorMessage}>
-        {loading ? (
+      <button type="submit" className="btn" disabled={isLoading || !!errorMessage}>
+        {isLoading ? (
           <>
             <Loader2 className="animate-spin" />
             Calculando

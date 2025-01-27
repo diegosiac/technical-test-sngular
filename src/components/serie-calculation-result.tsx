@@ -1,23 +1,16 @@
+import { useCalculation } from '@/hooks/use-calculation'
 import { cn } from '@/utils/cn'
 
 const LOADING_MESSAGE = 'Un momento, resolviendo cálculo...'
 
-interface SerieCalculationResultProps {
-  result: string | null
-  loading: boolean
-  errorMessage: string | null
-}
+export const SerieCalculationResult = () => {
+  const { calculation, errorMessage, isLoading } = useCalculation()
 
-export const SerieCalculationResult = ({
-  result,
-  loading,
-  errorMessage,
-}: SerieCalculationResultProps) => {
   const term = 'n'
 
-  const showResultSection = result !== null || loading
+  const showResultSection = !!calculation || isLoading
 
-  const resultContent = result ?? LOADING_MESSAGE
+  const resultContent = calculation?.result ?? LOADING_MESSAGE
 
   return (
     <div className="flex flex-col gap-2" aria-live="polite">
@@ -31,9 +24,9 @@ export const SerieCalculationResult = ({
           <label className="label mt-4">Resultado:</label>
           <span
             className={cn('bg-primary p-2 rounded-md text-xs break-words', {
-              'animate-pulse': loading,
+              'animate-pulse': isLoading,
             })}
-            aria-busy={loading}
+            aria-busy={isLoading}
           >
             {resultContent}
           </span>

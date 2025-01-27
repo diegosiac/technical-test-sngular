@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
+import type { Calculation } from '@/types/calculation'
 
 type CalculationCache = Map<number, string>
 
@@ -42,9 +43,9 @@ export const useCalculationCache = () => {
     }
   }, [])
 
-  const persistCache = useCallback(({ input, value }: { input: number; value: string }) => {
+  const persistCache = useCallback(({ input, result }: Calculation) => {
     const newCache = new Map(cacheRef.current)
-    newCache.set(input, value)
+    newCache.set(input, result)
 
     if (newCache.size > MAX_CACHE_SIZE) {
       const oldestKey = [...newCache.keys()][0]

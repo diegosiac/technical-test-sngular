@@ -58,7 +58,7 @@ describe('Series Calculator Worker', () => {
 
     const result = {
       input: testInput,
-      value: expectedResult,
+      result: expectedResult,
     } satisfies WorkerMessageSeriesCalculator
 
     expect(response).toEqual(result)

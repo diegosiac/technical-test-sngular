@@ -1,7 +1,7 @@
 export type WorkerMessageSeriesCalculator =
   | {
       input: number
-      value: string
+      result: string
     }
   | {
       error: string

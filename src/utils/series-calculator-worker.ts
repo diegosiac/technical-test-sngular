@@ -13,7 +13,7 @@ const handleMessage = (event: MessageEvent<number>) => {
 
     const response: WorkerMessageSeriesCalculator = {
       input,
-      value: result.toString(),
+      result: result.toString(),
     }
 
     self.postMessage(response)
